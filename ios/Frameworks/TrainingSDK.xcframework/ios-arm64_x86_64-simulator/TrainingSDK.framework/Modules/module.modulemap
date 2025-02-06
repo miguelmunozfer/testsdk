@@ -1,4 +1,0 @@
-framework module TrainingSDK {
-  header "TrainingSDK-Swift.h"
-  requires objc
-}
