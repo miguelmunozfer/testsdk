@@ -8,6 +8,8 @@
     "jsx": "react-native",
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "types": ["react-native"]
   },
   "include": ["src"],

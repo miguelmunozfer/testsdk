@@ -9,7 +9,7 @@ class VitaleSDKBridge: RCTEventEmitter {
     super.init()
   }
 
-  override static func requiresMainQueueSetup() -> Bool {
+  @objc override static func requiresMainQueueSetup() -> Bool {
     return true
   }
 
