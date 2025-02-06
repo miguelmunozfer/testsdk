@@ -13,12 +13,14 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "13.0" }
   s.source       = { :git => "https://github.com/miguelmunozfer/testsdk", :branch => "main" }
   
-  s.source_files = "ios/Frameworks/**/*.{h,m,mm,swift}"
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.requires_arc = true
   
   s.dependency "React-Core"
-  s.dependency "VitaleHealthSDK"
-
+  
   s.swift_version = '5.0'
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
+  s.pod_target_xcconfig = { 
+    'DEFINES_MODULE' => 'YES',
+    'FRAMEWORK_SEARCH_PATHS' => '$(SRCROOT)/../../ios/Frameworks/**'
+  }
 end 
