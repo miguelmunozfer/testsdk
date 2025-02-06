@@ -4,7 +4,7 @@
     "description": "React Native bridge for VitaleSDK",
     "main": "index.js",
     "types": "index.d.ts",
-    "author": "Tu Nombre",
+    "author": "MyVitale",
     "license": "",
     "homepage": "https://github.com/miguelmunozfer/testsdk",
     "react-native": {

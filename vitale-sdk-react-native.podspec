@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.license      = package['license']
   s.authors      = package['author']
   
-  s.platform     = :ios, "11.0"
-  s.source       = { :git => "https://github.com/tuuser/turepo.git", :tag => "#{s.version}" }
+  s.platform     = :ios, "15.0"
+  s.source       = { :git => "https://github.com/miguelmunozfer/testsdk", :tag => "#{s.version}" }
   
   s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.requires_arc = true
