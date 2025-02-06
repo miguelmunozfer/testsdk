@@ -24,6 +24,5 @@ Pod::Spec.new do |s|
     'FRAMEWORK_SEARCH_PATHS' => '$(SRCROOT)/../../node_modules/vitale-sdk-react-native/ios/Frameworks'
   }
 
-  # Opcional: especificar explícitamente la ubicación del framework
-  s.vendored_frameworks = 'ios/Frameworks/VitaleHealthSDK.xcframework'
+#   s.vendored_frameworks = 'ios/Frameworks/VitaleHealthSDK.xcframework'
 end 
