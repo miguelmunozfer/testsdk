@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.pod_target_xcconfig = { 
     'DEFINES_MODULE' => 'YES',
-    'FRAMEWORK_SEARCH_PATHS' => '$(SRCROOT)/../../node_modules/vitale-sdk-react-native/ios/Frameworks'
+    'FRAMEWORK_SEARCH_PATHS' => '$(SRCROOT)/Frameworks'
   }
 
 #   s.vendored_frameworks = 'ios/Frameworks/VitaleHealthSDK.xcframework'
