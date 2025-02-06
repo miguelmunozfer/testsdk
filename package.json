@@ -8,11 +8,12 @@
     "license": "",
     "homepage": "https://github.com/miguelmunozfer/testsdk",
     "react-native": {
+        "ios": {
+            "sourceDir": "./ios",
+            "packageType": "spm"
+        },
         "android": {
             "sourceDir": "./android"
-        },
-        "ios": {
-            "sourceDir": "./ios"
         }
     },
     "scripts": {

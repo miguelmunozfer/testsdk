@@ -2,28 +2,26 @@
 import PackageDescription
 
 let package = Package(
-    name: "VitaleHealthSDK",
+    name: "VitaleSDKReactNative",
+    platforms: [
+        .iOS(.v12)
+    ],
     products: [
         .library(
-            name: "VitaleHealthSDK",
-            targets: ["VitaleHealthLibrary"]),
+            name: "VitaleSDKReactNative",
+            targets: ["VitaleSDKReactNative"]),
     ],
     dependencies: [
-        .package(name: "TrainingSDKSPM", url: "https://github.com/miguelmunozfer/WorkoutSPM", .branch("main")),
-        .package(name: "NutritionSDKPlugin", url: "https://github.com/miguelmunozfer/NutritionSDKPlugin", .branch("main"))
+        .package(url: "https://github.com/miguelmunozfer/VitaleSPM", .branch("main"))
     ],
     targets: [
-        .binaryTarget(
-            name: "VitaleHealthBinary",
-            path: "./Frameworks/VitaleHealthSDK.xcframework"),
         .target(
-            name: "VitaleHealthLibrary",
+            name: "VitaleSDKReactNative",
             dependencies: [
-                "VitaleHealthBinary",
-                .product(name: "TrainingSDK", package: "TrainingSDKSPM"),
-                .product(name: "NutritionIASDK", package: "NutritionSDKPlugin")
+                .product(name: "VitaleHealthSDK", package: "VitaleSPM")
             ],
-            path: "Sources/VitaleHealthLibrary"
+            path: "VitaleSDKBridge",
+            sources: ["VitaleSDKBridge.swift"]
         )
     ]
 ) 
