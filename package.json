@@ -6,7 +6,7 @@
     "types": "index.d.ts",
     "author": "Tu Nombre",
     "license": "",
-    "homepage": "https://github.com/tuuser/turepo",
+    "homepage": "https://github.com/miguelmunozfer/testsdk",
     "react-native": {
         "android": {
             "sourceDir": "./android"
