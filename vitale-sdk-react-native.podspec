@@ -22,4 +22,7 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 
     'DEFINES_MODULE' => 'YES'
   }
+
+  # Incluir todos los frameworks de la carpeta
+  s.vendored_frameworks = 'ios/Frameworks/*.xcframework'
 end 
