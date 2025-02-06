@@ -10,10 +10,10 @@ Pod::Spec.new do |s|
   s.license      = package['license']
   s.authors      = package['author']
   
-  s.platforms    = { :ios => "13.0" }
+  s.platforms    = { :ios => "12.0" }
   s.source       = { :git => "https://github.com/miguelmunozfer/testsdk", :branch => "main" }
   
-  s.source_files = "ios/Frameworks/**/*.{h,m,mm,swift}"
+  s.source_files = "ios/VitaleSDKBridge/**/*.{h,m,mm,swift}"
   s.requires_arc = true
   
   s.dependency "React-Core"
@@ -21,6 +21,9 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.pod_target_xcconfig = { 
     'DEFINES_MODULE' => 'YES',
-    'FRAMEWORK_SEARCH_PATHS' => '$(SRCROOT)/../../ios/Frameworks/**'
+    'FRAMEWORK_SEARCH_PATHS' => '$(SRCROOT)/../../node_modules/vitale-sdk-react-native/ios/Frameworks'
   }
+
+  # Opcional: especificar explícitamente la ubicación del framework
+  s.vendored_frameworks = 'ios/Frameworks/VitaleHealthSDK.xcframework'
 end 
