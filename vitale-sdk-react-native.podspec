@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.authors      = package['author']
   
   s.platforms    = { :ios => "12.0" }
-  s.source       = { :git => "https://github.com/miguelmunozfer/testsdk", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/miguelmunozfer/testsdk", :branch => "main" }
   
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.source_files = "ios/Frameworks/**/*.{h,m,mm,swift}"
   s.requires_arc = true
   
   s.dependency "React-Core"
