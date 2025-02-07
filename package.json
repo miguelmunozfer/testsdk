@@ -4,21 +4,16 @@
     "description": "React Native bridge for VitaleSDK",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
-    "author": "MyVitale",
-    "license": "",
-    "homepage": "https://github.com/miguelmunozfer/testsdk",
-    "react-native": {
-        "ios": {
-            "sourceDir": "./ios",
-            "packageType": "spm"
-        },
-        "android": {
-            "sourceDir": "./android"
-        }
-    },
+    "files": [
+        "lib",
+        "ios",
+        "android",
+        "vitale-sdk-react-native.podspec"
+    ],
     "scripts": {
         "prepare": "npm run build",
-        "build": "tsc"
+        "build": "./node_modules/.bin/tsc",
+        "clean": "rm -rf lib"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
@@ -30,5 +25,16 @@
         "typescript": "^4.9.0",
         "react": "^18.0.0",
         "react-native": "^0.70.0"
+    },
+    "author": "MyVitale",
+    "license": "",
+    "homepage": "https://github.com/miguelmunozfer/testsdk",
+    "react-native": {
+        "ios": {
+            "sourceDir": "./ios"
+        },
+        "android": {
+            "sourceDir": "./android"
+        }
     }
 } 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -6,136 +6,82 @@ import {
   Text,
   TouchableOpacity,
   View,
+  NativeModules
 } from 'react-native';
 import VitaleSDK, { Profile } from 'vitale-sdk-react-native';
 
 const App = () => {
+  useEffect(() => {
+    // Log al inicio para verificar que todo está bien
+    console.log('NativeModules disponibles:', Object.keys(NativeModules));
+    console.log('VitaleSDK disponible:', VitaleSDK);
+  }, []);
+
   const initSDK = () => {
-    VitaleSDK.startSDK(
-      'your-app-id',
-      'your-password',
-      'user-id',
-      'optional-url'
-    );
-  };
-
-  const updateProfile = () => {
-    const profile: Profile = {
-      firstName: 'John',
-      lastName: 'Doe',
-      gender: 0,
-      height: 180,
-      weight: 75,
-      birthDate: new Date('1990-01-01')
-    };
-    VitaleSDK.updatePersonalProfile(profile);
-  };
-
-  const getProfile = async () => {
     try {
-      const profile = await VitaleSDK.getProfile();
-      console.log('Profile:', profile);
+      console.log('Iniciando SDK...');
+      VitaleSDK.startSDK(
+        'your-app-id',
+        'your-password',
+        'user-id',
+        'optional-url'
+      );
+      console.log('SDK iniciado correctamente');
     } catch (error) {
-      console.error('Error getting profile:', error);
+      console.error('Error al iniciar SDK:', error);
     }
   };
 
-  const setColors = () => {
-    VitaleSDK.setMainColor('#FF0000');
-    VitaleSDK.setPrimaryButtonColor('#00FF00');
-    VitaleSDK.setNavigationBarColor('#0000FF');
-    VitaleSDK.setNavigationTintColor('#FFFFFF');
+  const testSDK = async () => {
+    try {
+      // Probar cada método del SDK
+      console.log('Probando métodos del SDK...');
+      
+      // Test setMainColor
+      VitaleSDK.setMainColor('#FF0000');
+      console.log('setMainColor OK');
+      
+      // Test showVitale
+      VitaleSDK.showVitale();
+      console.log('showVitale OK');
+      
+      // Test getProfile
+      const profile = await VitaleSDK.getProfile();
+      console.log('getProfile OK:', profile);
+      
+    } catch (error) {
+      console.error('Error en test:', error);
+    }
   };
 
-  const Button = ({ title, onPress }: { title: string; onPress: () => void }) => (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
-  );
+  const checkNativeModule = () => {
+    console.log('Checking native module...');
+    
+    // Verificar que el módulo existe
+    console.log('VitaleSDKBridge exists:', !!NativeModules.VitaleSDKBridge);
+    
+    // Listar métodos disponibles
+    console.log('Available methods:', 
+      Object.keys(NativeModules.VitaleSDKBridge)
+    );
+    
+    // Verificar que los métodos son funciones
+    console.log('startSDK is function:', 
+      typeof NativeModules.VitaleSDKBridge.startSDK === 'function'
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Setup</Text>
-          <Button title="Initialize SDK" onPress={initSDK} />
-          <Button title="Set Colors" onPress={setColors} />
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Profile</Text>
-          <Button title="Update Profile" onPress={updateProfile} />
-          <Button title="Get Profile" onPress={getProfile} />
-          <Button title="Show Profile" onPress={VitaleSDK.showProfile} />
-          <Button 
-            title="Set Pathologies" 
-            onPress={() => VitaleSDK.setPathologies(['diabetes', 'hypertension'])} 
-          />
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Navigation</Text>
-          <Button title="Show Vitale" onPress={VitaleSDK.showVitale} />
-          <Button title="Show Nutrition" onPress={VitaleSDK.showNutrition} />
-          <Button 
-            title="Set Country" 
-            onPress={() => VitaleSDK.setCountry(1)} 
-          />
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Training</Text>
-          <Button title="Show Training" onPress={VitaleSDK.showTraining} />
-          <Button title="Show Today's Training" onPress={VitaleSDK.showTodaytraining} />
-          <Button title="Show Library" onPress={VitaleSDK.showLibrary} />
-          <Button title="Show Custom Workouts" onPress={VitaleSDK.showCustomWorkouts} />
-          <Button title="Show Time Based Workouts" onPress={VitaleSDK.showTimeBasedWorkouts} />
+          <Text style={styles.sectionTitle}>Tests</Text>
+          <Button title="Test SDK" onPress={testSDK} />
+          {/* ... resto de los botones ... */}
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  scrollContent: {
-    padding: 16,
-  },
-  section: {
-    marginBottom: 24,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    padding: 16,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 12,
-    color: '#333',
-  },
-  button: {
-    backgroundColor: '#007AFF',
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 4,
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: '600',
-  },
-});
-
-export default App; 
+// ... resto del código ... 
